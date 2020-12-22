@@ -18,7 +18,7 @@ from rlzoo.common.distributions import make_dist
 class StochasticContinuousPolicyNetwork(Model):
     def __init__(self, state_shape, action_shape, hidden_dim_list, w_init=tf.keras.initializers.glorot_normal(),
                  activation=tf.nn.relu, output_activation=None, log_std_min=-20, log_std_max=2, trainable=True):
-        """ 
+        """
         Stochastic continuous policy network with multiple fully-connected layers or convolutional layers (according to state shape)
 
         :param state_shape: (tuple[int]) shape of the state, for example, (state_dim, ) for single-dimensional state
@@ -57,9 +57,9 @@ class StochasticContinuousPolicyNetwork(Model):
 class DeterministicContinuousPolicyNetwork(Model):
     def __init__(self, state_shape, action_shape, hidden_dim_list, w_init=tf.keras.initializers.glorot_normal(), \
                  activation=tf.nn.relu, output_activation=tf.nn.tanh, trainable=True):
-        """ 
+        """
         Deterministic continuous policy network with multiple fully-connected layers or convolutional layers (according to state shape)
-        
+
         :param state_shape: (tuple[int]) shape of the state, for example, (state_dim, ) for single-dimensional state
         :param action_shape: (tuple[int]) shape of the action, for example, (action_dim, ) for single-dimensional action
         :param hidden_dim_list: (list[int]) a list of dimensions of hidden layers
@@ -92,7 +92,7 @@ class DeterministicContinuousPolicyNetwork(Model):
 class DeterministicPolicyNetwork(Model):
     def __init__(self, state_space, action_space, hidden_dim_list, w_init=tf.keras.initializers.glorot_normal(),
                  activation=tf.nn.relu, output_activation=tf.nn.tanh, trainable=True, name=None):
-        """ 
+        """
         Deterministic continuous/discrete policy network with multiple fully-connected layers
 
         :param state_space: (gym.spaces) space of the state from gym environments
@@ -190,9 +190,9 @@ class StochasticPolicyNetwork(Model):
     def __init__(self, state_space, action_space, hidden_dim_list, w_init=tf.keras.initializers.glorot_normal(),
                  activation=tf.nn.relu, output_activation=tf.nn.tanh, log_std_min=-20, log_std_max=2, trainable=True,
                  name=None, state_conditioned=False):
-        """ 
-        Stochastic continuous/discrete policy network with multiple fully-connected layers 
-        
+        """
+        Stochastic continuous/discrete policy network with multiple fully-connected layers
+
         :param state_space: (gym.spaces) space of the state from gym environments
         :param action_space: (gym.spaces) space of the action from gym environments
         :param hidden_dim_list: (list[int]) a list of dimensions of hidden layers

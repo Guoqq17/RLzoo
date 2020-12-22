@@ -72,12 +72,19 @@ class ACNet(object):
         with tf.GradientTape() as tape:
             self.actor(buffer_s)
             self.a_his = buffer_a  # float32
+            print('------')
+            print('actor', self.actor(buffer_s))
+            print('a_his', self.a_his)
             log_prob = self.actor.policy_dist.logp(self.a_his)
+            print('log prob', log_prob)
             exp_v = log_prob * td  # td is from the critic part, no gradients for it
             entropy = self.actor.policy_dist.entropy()  # encourage exploration
             self.exp_v = self.ENTROPY_BETA * entropy + exp_v
+            print('exp_v', self.exp_v)
             self.a_loss = tf.reduce_mean(-self.exp_v)
+            print('a_loss',self.a_loss)
         self.a_grads = tape.gradient(self.a_loss, self.actor.trainable_weights)
+        print('a_grads', self.a_grads)
         OPT_A.apply_gradients(zip(self.a_grads, globalAC.actor.trainable_weights))  # local grads applies to global net
         del tape  # Drop the reference to the tape
 
